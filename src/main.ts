@@ -9,6 +9,9 @@ async function bootstrap() {
       whitelist: true,
       forbidNonWhitelisted: true, // prevent unwanted key in request body posted to endpoint
       transform: true, // enable auto transform to DTO instance
+      transformOptions: {
+        enableImplicitConversion: true, // implicitly convert string query to number
+      },
     }),
   );
   await app.listen(3000);

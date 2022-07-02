@@ -12,6 +12,7 @@ import {
   Redirect,
 } from '@nestjs/common';
 import { AppService } from './app.service';
+import { PaginationQueryDto } from './common/dto/pagination-query.dto';
 import { CreateCoffeDto } from './dto/create-coffee.dto';
 import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 import { Coffee } from './entities/coffee.entity';
@@ -39,8 +40,9 @@ export class AppController {
   }
 
   @Get()
-  findAll(): Promise<Coffee[]> {
-    return this.appService.findAll();
+  findAll(@Query() paginationQuery: PaginationQueryDto): Promise<Coffee[]> {
+    // const { limit, offset } = paginationQuery;
+    return this.appService.findAll(paginationQuery);
   }
 
   @Get(':id')
