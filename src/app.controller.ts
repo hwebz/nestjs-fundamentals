@@ -39,12 +39,12 @@ export class AppController {
   }
 
   @Get()
-  findAll(): Coffee[] {
+  findAll(): Promise<Coffee[]> {
     return this.appService.findAll();
   }
 
   @Get(':id')
-  getExamples(@Param('id') id: string): Coffee {
+  getExamples(@Param('id') id: string): Promise<Coffee> {
     return this.appService.findOne(id);
   }
 
